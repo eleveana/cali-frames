@@ -12,25 +12,29 @@
 
 .custom-page{max-width:760px}
 .custom-intro p{font-size:17px;line-height:1.9;max-width:560px}
-.custom-form,.custom-sent{margin-top:40px;padding:40px;border:1px solid var(--line);border-radius:24px;background:#fed7d033}
+.custom-form{margin-top:40px;padding:40px;border:1px solid var(--line);border-radius:24px;background:#fed7d033}
 .custom-form .field+.field{margin-top:26px}
-.custom-form label{display:block;font-weight:700;font-size:15px;margin-bottom:9px}
+.custom-form label,.custom-form .label{display:block;font-weight:700;font-size:15px;margin-bottom:9px}
 .custom-form .req{color:var(--orange);margin-left:3px}
-.custom-form input,.custom-form textarea{display:block;width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--cream);border:1px solid #b5cbd8;border-radius:14px;padding:13px 16px}
+.custom-form input:not([type=checkbox]),.custom-form textarea{display:block;width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--cream);border:1px solid #b5cbd8;border-radius:14px;padding:13px 16px}
 .custom-form textarea{resize:vertical;min-height:90px}
 .custom-form input:focus-visible,.custom-form textarea:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
-.custom-form input[type=file]{padding:10px 12px;font-size:14px}
-.custom-form input[type=file]::file-selector-button{font:inherit;font-size:13px;border:0;border-radius:999px;background:var(--ink);color:var(--cream);padding:9px 16px;margin-right:12px;cursor:pointer}
 .custom-form .hint{font-size:13px;line-height:1.7;color:#506679;margin-top:8px}
 .custom-form .field>label+.hint{margin:-4px 0 10px}
 .custom-form .button{margin-top:34px;width:100%;justify-content:center;gap:12px;font-size:15px}
 .form-error{color:#9b3b2c;font-size:14px;font-weight:600;margin-top:14px}
-.custom-sent h2{font-size:38px;margin:12px 0 18px}
-.custom-sent p{font-size:15px;line-height:1.8}
-.custom-sent p+p{margin-top:12px}
-.custom-sent .text-link{margin-top:10px;cursor:pointer}
-.custom-sent p .text-link{margin:0;padding-bottom:2px}
-.custom-form[hidden],.custom-sent[hidden],.form-error[hidden],.custom-form .hint[hidden]{display:none}
-@media(max-width:600px){.custom-form,.custom-sent{padding:24px 18px;margin-top:28px}
-.custom-intro p{font-size:15px}
-.custom-sent h2{font-size:30px}}
+.form-error[hidden]{display:none}
+@media(max-width:600px){.custom-form{padding:24px 18px;margin-top:28px}
+.custom-intro p{font-size:15px}}
+
+#checkout[hidden],#size-field[hidden]{display:none}
+#checkout{width:100%;justify-content:center;gap:12px;margin-bottom:12px}
+#checkout:disabled{opacity:.6;cursor:wait}
+#bag #email-order{width:100%;justify-content:center;gap:12px;margin-bottom:12px}
+#bag #checkout+#email-order{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+#bag-error{margin:0 0 14px}
+.custom-thumb{width:50px;height:66px;display:grid;place-items:center;background:linear-gradient(135deg,#e3f5ff,#fed7d0);border-radius:6px;font-size:20px;flex-shrink:0}
+.custom-form .check{display:flex;align-items:center;gap:10px}
+.custom-form .check input{width:20px;height:20px;accent-color:var(--ink);margin:0}
+.custom-form .check label{margin:0;font-weight:600}
+.custom-form .hint .text-link{margin:0;padding-bottom:1px;font-size:inherit}

@@ -1,9 +1,7 @@
-// Custom poster form: no backend, so answers go out as a prefilled email.
+// Custom poster form: saves the answers as a cart item, then opens the cart
+// on the shop page, where checkout sends them to Shopify as line item details.
 const form = document.getElementById('custom-form');
-const sent = document.getElementById('custom-sent');
 const error = document.getElementById('form-error');
-const selfie = document.getElementById('selfie');
-const selfieNote = document.getElementById('selfie-note');
 
 const questions = [
   ['name', 'Name'],
@@ -16,12 +14,6 @@ const questions = [
   ['reference', 'Reference image'],
   ['email', 'Email'],
 ];
-
-selfie.addEventListener('change', () => {
-  const file = selfie.files[0];
-  selfieNote.hidden = !file;
-  if (file) selfieNote.textContent = `Selected: ${file.name}. Attach it to the email before sending.`;
-});
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -39,22 +31,17 @@ form.addEventListener('submit', (e) => {
   }
   error.hidden = true;
 
-  const file = selfie.files[0];
-  const lines = questions.map(([key, label]) => `${label}: ${get(key) || '—'}`);
-  lines.push(`Selfie photo: ${file ? `attached (${file.name})` : 'none'}`);
-  const body = `Hi Maya! I’d love a custom poster ($50).\n\n${lines.join('\n')}\n\nPlease send next steps.`;
-  const subject = `Custom poster for ${get('name')}`;
+  const attributes = questions.map(([key, label]) => ({ key: label, value: get(key) }));
+  if (data.get('selfie')) attributes.push({ key: 'Photo', value: 'Customer will email a photo' });
+  const item = { custom: true, title: `Custom poster for ${get('name')}`, attributes };
 
-  window.location.href = `mailto:hello@califrames.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-  document.getElementById('sent-photo').hidden = !file;
-  form.hidden = true;
-  sent.hidden = false;
-  sent.focus();
-});
-
-document.getElementById('edit-answers').addEventListener('click', () => {
-  sent.hidden = true;
-  form.hidden = false;
-  form.querySelector('input').focus();
+  try {
+    const picks = JSON.parse(localStorage.getItem('califrames-picks') || '[]');
+    localStorage.setItem('califrames-picks', JSON.stringify([...(Array.isArray(picks) ? picks : []), item]));
+  } catch {
+    error.textContent = 'Your browser blocked saving the cart. Please email your answers to hello@califrames.com.';
+    error.hidden = false;
+    return;
+  }
+  location.href = '/?cart';
 });
