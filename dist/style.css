@@ -9,3 +9,28 @@
 .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;font-family:var(--serif);font-size:26px;font-weight:600;letter-spacing:-.7px}.brand img{width:64px;height:64px;object-fit:contain}footer .brand img{width:64px;height:64px}.announcement{background:#fed7d0;color:var(--ink)}h1 em{color:#264056;font-style:normal;background:linear-gradient(transparent 78%,#fed7d0 78%,#fed7d0 96%,transparent 96%)}.button{border-radius:999px}.sun,.ticker span,.story-mark{color:#75a4be}.stamp{color:var(--ink)}.closing{background:linear-gradient(135deg,#e3f5ff,#fffaea 50%,#fed7d0);color:var(--ink)}.closing .button{background:var(--ink);color:var(--cream)}.story-mark{background:#fed7d055;border-color:#fed7d0}.hero-art{border-radius:22px}.wall{border-radius:22px;overflow:hidden}.card-art{border-radius:16px}.card:hover .card-art{background:#d9eaf4}.toast{border-radius:20px}@media(max-width:900px){.brand img{width:52px;height:52px}.brand{font-size:23px}}@media(max-width:600px){.brand img{width:48px;height:48px}.brand{font-size:22px;gap:6px}footer .brand img{width:55px;height:55px}}
 
 .info-page{max-width:1200px;padding:65px 5% 80px;margin:auto}.info-page h1{font-size:64px;line-height:1.1;letter-spacing:-2px}.info-page h1 em{font-size:42px;background:none}.about-intro{display:grid;grid-template-columns:60% 40%;align-items:center;gap:40px}.about-intro p{font-size:17px;line-height:1.9;margin:20px 0}.maya-logo{background:linear-gradient(135deg,#e3f5ff,#fffaea,#fed7d0);padding:30px;border-radius:40px}.maya-logo img{width:100%}.page-cta{margin-top:65px;background:#fed7d066;border-radius:24px;text-align:center;padding:40px 20px}.page-cta h2{font-size:38px;margin-bottom:25px}.page-cta .text-link{margin-left:20px}.first-step{margin:45px 0;background:#e3f5ff;padding:35px;border-radius:24px}.first-step h2{font-size:35px;margin:12px 0}.first-step p{line-height:1.8;max-width:600px}.paths{display:grid;grid-template-columns:1fr 1fr;gap:30px}.paths>section{padding:35px;border:1px solid var(--line);border-radius:24px}.paths>section:nth-child(2){background:#fed7d033}.paths article{margin:30px 0}.paths article>span{font-size:10px;letter-spacing:2px;color:#506679}.paths h3{font-family:var(--serif);font-size:26px;font-weight:500;margin:9px 0}.paths p{font-size:15px;line-height:1.8}.paths .button{gap:15px}@media(max-width:700px){.info-page{padding-top:35px}.info-page h1{font-size:44px}.info-page h1 em{font-size:30px}.about-intro{grid-template-columns:1fr;gap:25px}.maya-logo{max-width:280px;justify-self:center}.about-intro p{font-size:15px}.paths{grid-template-columns:1fr}.paths>section{padding:25px}.page-cta h2{font-size:30px}.info-page+footer{border-top:1px solid var(--line)}}@media(max-width:1000px) and (min-width:601px){nav{gap:12px;font-size:11px}.brand{font-size:21px}.brand img{width:45px;height:45px}}
+
+.custom-page{max-width:760px}
+.custom-intro p{font-size:17px;line-height:1.9;max-width:560px}
+.custom-form,.custom-sent{margin-top:40px;padding:40px;border:1px solid var(--line);border-radius:24px;background:#fed7d033}
+.custom-form .field+.field{margin-top:26px}
+.custom-form label{display:block;font-weight:700;font-size:15px;margin-bottom:9px}
+.custom-form .req{color:var(--orange);margin-left:3px}
+.custom-form input,.custom-form textarea{display:block;width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--cream);border:1px solid #b5cbd8;border-radius:14px;padding:13px 16px}
+.custom-form textarea{resize:vertical;min-height:90px}
+.custom-form input:focus-visible,.custom-form textarea:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.custom-form input[type=file]{padding:10px 12px;font-size:14px}
+.custom-form input[type=file]::file-selector-button{font:inherit;font-size:13px;border:0;border-radius:999px;background:var(--ink);color:var(--cream);padding:9px 16px;margin-right:12px;cursor:pointer}
+.custom-form .hint{font-size:13px;line-height:1.7;color:#506679;margin-top:8px}
+.custom-form .field>label+.hint{margin:-4px 0 10px}
+.custom-form .button{margin-top:34px;width:100%;justify-content:center;gap:12px;font-size:15px}
+.form-error{color:#9b3b2c;font-size:14px;font-weight:600;margin-top:14px}
+.custom-sent h2{font-size:38px;margin:12px 0 18px}
+.custom-sent p{font-size:15px;line-height:1.8}
+.custom-sent p+p{margin-top:12px}
+.custom-sent .text-link{margin-top:10px;cursor:pointer}
+.custom-sent p .text-link{margin:0;padding-bottom:2px}
+.custom-form[hidden],.custom-sent[hidden],.form-error[hidden],.custom-form .hint[hidden]{display:none}
+@media(max-width:600px){.custom-form,.custom-sent{padding:24px 18px;margin-top:28px}
+.custom-intro p{font-size:15px}
+.custom-sent h2{font-size:30px}}

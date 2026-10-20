@@ -11,6 +11,10 @@
     {
       "source": "/how-it-works",
       "destination": "/how-it-works.html"
+    },
+    {
+      "source": "/custom",
+      "destination": "/custom.html"
     }
   ]
 }
