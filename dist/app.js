@@ -27,7 +27,8 @@ function render(){
   const shown=products.filter(p=>(region==='All'||p.region===region)&&p.name.toLowerCase().includes(q));
   $('#grid').innerHTML=shown.map(p=>{
     const sp=shopifyFor(p.slug);
-    const price=sp?` · from ${money(Math.min(...sp.variants.map(v=>v.price)))}`:'';
+    const prices=sp?sp.variants.map(v=>v.price):[];
+    const price=sp?` · ${new Set(prices).size>1?'from ':''}${money(Math.min(...prices))}`:'';
     return`<button class="card" data-slug="${p.slug}" aria-label="View ${p.name} poster"><div class="card-art"><img src="assets/${p.slug}-hq.webp" alt="${p.name} illustrated California poster" loading="lazy" width="1448" height="2048"></div><div class="card-title">${p.name}<span aria-hidden="true">${arrow}</span></div><small>${p.region} · California city series${price}</small></button>`;
   }).join('');
   $('#result-count').textContent=`${shown.length} ${shown.length===1?'place':'places'} to love`;
@@ -60,7 +61,8 @@ $('#grid').addEventListener('click',e=>{
   $('#product-img').src=`assets/${selected.slug}-hq.webp`;
   $('#product-img').alt=selected.name+' poster artwork preview';
   $('#frame').value='Oak frame';
-  $('#size-field').hidden=!sp;
+  // A product with only Shopify's "Default Title" variant has no size choice.
+  $('#size-field').hidden=!sp||sp.variants.length<2;
   if(sp){
     $('#size').innerHTML=sp.variants.map(v=>`<option value="${v.id}">${v.title} — ${money(v.price)}</option>`).join('');
     $('#product-fine').textContent='Secure checkout through Shopify. We’ll be in touch about shipping or pickup.';
@@ -77,7 +79,7 @@ $('#add').addEventListener('click',()=>{
   const pick={slug:selected.slug,frame:$('#frame').value};
   if(sp){
     const v=sp.variants.find(v=>v.id===$('#size').value);
-    Object.assign(pick,{variantId:v.id,size:v.title,price:v.price});
+    Object.assign(pick,{variantId:v.id,size:sp.variants.length>1?v.title:'',price:v.price});
   }
   picks.push(pick);
   savePicks();
@@ -110,7 +112,7 @@ function renderBag(){
       row.querySelector('button').setAttribute('aria-label','Remove custom poster');
     }else{
       const p=productFor(item.slug);
-      const detail=item.variantId?`${item.size} · ${item.frame} · ${money(item.price)}`:`${item.frame} · price by email`;
+      const detail=item.variantId?[item.size,item.frame,money(item.price)].filter(Boolean).join(' · '):`${item.frame} · price by email`;
       row.innerHTML=`<img src="assets/${p.slug}-hq.webp" alt="${p.name} poster"><p>${p.name}<small>${detail}</small></p><button data-remove="${i}" aria-label="Remove ${p.name}">Remove</button>`;
     }
     root.append(row);
