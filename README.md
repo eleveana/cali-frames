@@ -30,6 +30,7 @@ Import this repository, select **Other** for the framework, leave the build comm
 The site connects to the Shopify store `cali-frame-creations-iu5wz.myshopify.com` through the Storefront API (settings at the top of `dist/shopify.js`). Checkout happens on Shopify; the cart lives in the browser until then.
 
 - **Selling a city poster online:** in Shopify admin, create a product with handle `<city-slug>-poster` (e.g. `oceanside-poster`, `la-jolla-poster`; slugs are in `dist/products.json`), add size variants with prices, and make it available on the sales channel the Storefront token uses. The site picks it up automatically: the card shows the price, the product dialog shows sizes, and it checks out on Shopify. The frame choice is sent as a `Frame` line item property.
+- **Bulk import:** `shopify/city-posters.csv` creates all 15 city posters (4 sizes each) via Shopify admin → Products → Import. Afterwards, add them to the same sales channel as the Custom Poster product so the site can see them.
 - **City posters not in Shopify yet** stay as “price by email” inquiries to hello@califrames.com.
 - **Custom posters** check out as the Shopify product with handle `custom-poster`; the customer’s answers appear as line item properties on the order. Customers email their own photo if they want to be in the poster.
 
