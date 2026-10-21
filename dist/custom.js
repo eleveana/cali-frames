@@ -39,7 +39,7 @@ form.addEventListener('submit', (e) => {
     const picks = JSON.parse(localStorage.getItem('califrames-picks') || '[]');
     localStorage.setItem('califrames-picks', JSON.stringify([...(Array.isArray(picks) ? picks : []), item]));
   } catch {
-    error.textContent = 'Your browser blocked saving the cart. Please email your answers to hello@califrames.com.';
+    error.textContent = 'Your browser blocked saving the cart. Please email your answers to maya@tryeleve.com.';
     error.hidden = false;
     return;
   }

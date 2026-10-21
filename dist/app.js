@@ -128,7 +128,7 @@ function renderBag(){
     :email.length?'This is an order inquiry. We’ll confirm the details and total before payment.'
     :online.length?'Secure checkout through Shopify. Taxes and shipping are calculated at checkout.':'';
   const body='Hi Califrames! I’m interested in these posters:\n\n'+email.map(x=>productFor(x.slug).name+' — '+x.frame).join('\n')+'\n\nPlease send me available sizes, pricing, and pickup or delivery options.\n\nThank you!';
-  $('#email-order').href='mailto:hello@califrames.com?subject='+encodeURIComponent('My Califrames poster selection')+'&body='+encodeURIComponent(body);
+  $('#email-order').href='mailto:maya@tryeleve.com?subject='+encodeURIComponent('My Califrames poster selection')+'&body='+encodeURIComponent(body);
 }
 
 $('#checkout').addEventListener('click',async()=>{
@@ -145,7 +145,7 @@ $('#checkout').addEventListener('click',async()=>{
     location.href=cart.url;
   }catch(err){
     console.error('Checkout failed',err);
-    $('#bag-error').textContent='We couldn’t start checkout. Please try again, or email hello@califrames.com and we’ll help.';
+    $('#bag-error').textContent='We couldn’t start checkout. Please try again, or email maya@tryeleve.com and we’ll help.';
     $('#bag-error').hidden=false;
     btn.disabled=false;
   }
